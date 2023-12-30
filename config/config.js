@@ -1,12 +1,12 @@
 const {sequelize, Model, DataTypes, Sequelize} = require('sequelize')
 
 const dbConfig = {
-    db_name: 'defaultdb',
-    db_user: 'avnadmin',
-    db_host: 'mysql-29e19855-bhanuchowhan652-c2ef.a.aivencloud.com',
-    db_pass: 'AVNS_nw0lYY8MM8gb7_sn9Ou',
-    conn_type: 'mysql',
-    port: '15778'
+    db_name: process.env.DB_NAME,
+    db_user: process.env.DB_USER,
+    db_host: process.env.DB_HOST,
+    db_pass: process.env.DB_PASSWORD,
+    conn_type: process.env.DB_CONN_TYPE,
+    port: process.env.DB_PORT
 }
 
 const sequelizeTZ = new Sequelize(dbConfig.db_name, dbConfig.db_user, dbConfig.db_pass, {
