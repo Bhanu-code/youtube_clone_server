@@ -17,6 +17,7 @@ historyModel.init({
     video_id:{
         type: dbConfig.Sequelize.STRING,
         allowNull: false,
+        unique: true
     },
     user_id:{
         type: dbConfig.Sequelize.INTEGER,
