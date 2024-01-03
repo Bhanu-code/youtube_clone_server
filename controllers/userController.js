@@ -1,5 +1,6 @@
 const userModel = require('../models/userModel');
 const historyModel = require('../models/historyModel');
+const watchlistModel = require('../models/watchlistModel');
 
 const getUsers = async (req, res) =>{
     try {
@@ -68,5 +69,30 @@ const deleteHistory = async (req, res)=>{
     }
 }
 
+const addToWatchlist = async (req, res)=>{
+    try {
+        const result = await watchlistModel.create({
+            where: { user_id: req.params.userId }
+        })
+        console.log(result)
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
 
-module.exports = { getUsers, deleteUsers, updateUsers, addToHistory, getUsersHistory, deleteHistory }
+const deleteWatchlist = async (req, res)=>{
+    try {
+        const result = await watchlistModel.destroy({
+            where: { user_id: req.params.userId }
+        })
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+
+}
+
+
+module.exports = { getUsers, deleteUsers, updateUsers, addToHistory, getUsersHistory, deleteHistory,
+addToWatchlist, deleteWatchlist }
