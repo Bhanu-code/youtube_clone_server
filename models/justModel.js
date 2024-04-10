@@ -1,20 +1,21 @@
 const dbConfig = require('../config/config');
+const userModel = require('./userModel');
 const Model = dbConfig.Model;
 const sequelize = dbConfig.SequelizeTZ;
 
 
-class watchlistModel extends Model{
+class justModel extends Model{
 
 }
 
-watchlistModel.init({
+justModel.init({
     id: {
         type: dbConfig.Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
-        autoIncrement: true
+        autoIncrement: true,
     },
-    video_id:{
+    just_id:{
         type: dbConfig.Sequelize.STRING,
         allowNull: false,
         unique: true
@@ -31,6 +32,6 @@ watchlistModel.init({
         type: dbConfig.Sequelize.DATE,
         allowNull: false,
     }
-}, { sequelize, timestamps: true, modelName: 'watchlist', freezeTableName: true })
+}, { sequelize, timestamps: true, modelName: 'just', freezeTableName: true })
 
-module.exports = watchlistModel;
+module.exports = justModel;

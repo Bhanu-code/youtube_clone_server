@@ -22,6 +22,7 @@ historyModel.init({
     user_id:{
         type: dbConfig.Sequelize.INTEGER,
         allowNull: false,
+        required: true,
     },
     createdAt: {
         type: dbConfig.Sequelize.DATE,

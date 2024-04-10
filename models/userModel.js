@@ -2,6 +2,8 @@ const dbConfig = require('../config/config')
 const Model = dbConfig.Model;
 const sequelize = dbConfig.SequelizeTZ;
 
+const historyModel = require('./historyModel');
+
 // const Op = dbConfig.Sequelize.Op;
 
 class userModel extends Model{
@@ -13,7 +15,11 @@ userModel.init({
         type: dbConfig.Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
-        autoIncrement: true
+        autoIncrement: true,
+        references: {
+            model: historyModel,
+            key: 'id'
+          }
     },
     username:{
         type: dbConfig.Sequelize.STRING,
@@ -40,5 +46,6 @@ userModel.init({
         allowNull: false,
     }
 }, { sequelize, timestamps: true, modelName: 'user', freezeTableName: true })
+
 
 module.exports = userModel;
